@@ -182,9 +182,9 @@ class Money
       # @return [String] URL
       def source_url
         if source == OE_SOURCE
-          "#{oer_url}?app_id=#{app_id}"
+          "#{oer_url}?app_id=#{app_id}&show_alternative=true"
         else
-          "#{oer_url}?app_id=#{app_id}&base=#{source}"
+          "#{oer_url}?app_id=#{app_id}&show_alternative=true&base=#{source}"
         end
       end
 
