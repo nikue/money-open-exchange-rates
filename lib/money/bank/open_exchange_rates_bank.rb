@@ -277,7 +277,7 @@ class Money
         elsif doc = read_from_url
           store_in_cache(doc)
         end
-        @oer_rates = JSON.parse(doc['rates'])
+        @oer_rates = JSON.parse(doc)['rates']
       end
 
       # Refresh expiration from now
