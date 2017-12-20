@@ -273,8 +273,11 @@ class Money
       #
       # @return [Hash] key is country code (ISO 3166-1 alpha-3) value Float
       def exchange_rates
-        doc = JSON.parse(read_from_cache || read_from_url)
-        @oer_rates = doc['rates']
+        if doc = read_from_cache
+        elsif doc = read_from_url
+          store_in_cache(doc)
+        end
+        @oer_rates = JSON.parse(doc['rates'])
       end
 
       # Refresh expiration from now
